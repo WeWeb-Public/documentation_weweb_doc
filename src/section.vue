@@ -50,7 +50,7 @@
             <div class="content" v-if="section.data.isVideos">
                 <div class="videos">
                     <div v-for="(elem) in section.data.elems" :key="elem.id">
-                        <transition name="fade" mode="in-out">
+                        <transition name="fade-delay" mode="in-out">
                             <div class="video" v-if="elem.id === elemSelected.id">
                                 <wwObject :ww-object="elem.video" ></wwObject>
                             </div>
@@ -485,8 +485,6 @@ export default {
           z-index: 1;
           background: white;
           .elem-text {
-            -webkit-transition: color 0.5s ease;
-            transition: color 0.5s ease;
             display: block;
             padding: 30px 20px;
             color: #5e5e5e;
@@ -641,6 +639,8 @@ export default {
           background: white;
           border-bottom: 5px solid #dedede;
           .elem-row {
+            border-right: 2px solid #dedede;
+            border-left: 2px solid #dedede;
             color: #5e5e5e;
             font-size: 18px;
             font-weight: 500;
@@ -687,8 +687,8 @@ export default {
               color: white;
             }
             .elem-background {
-              -webkit-animation: slide-right 0.5s forwards 0.2s;
-              animation: slide-right 0.5s forwards 0.2s;
+              -webkit-animation: slide-right .4s forwards 0.2s;
+              animation: slide-right .4s forwards 0.2s;
             }
           }
         }
@@ -766,10 +766,17 @@ export default {
   // Vuejs transition
   .fade-enter-active,
   .fade-leave-active {
-    -webkit-transition: opacity 1s ease 0.5s;
-    transition: opacity 1s ease 0.5s;
+    -webkit-transition: opacity 1s ease;
+    transition: opacity 1s ease;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  // Vuejs transition
+  .fade-delay-enter-active,
+  .fade-delay-leave-active {
+    -webkit-transition: opacity 1s ease .4s;
+    transition: opacity 1s ease .4s;
+  }
+  .fade-enter, .fade-leave-to,
+  .fade-delay-enter, .fade-delay-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
     position: absolute;
     top: 0;
