@@ -284,7 +284,7 @@ export default {
                 needUpdate = true
             }
 
-            if (!this.section.data.isVideos) {
+            if (this.section.data.isVideos === undefined) {
                 this.section.data.isVideos = true
                 needUpdate = true
             }
