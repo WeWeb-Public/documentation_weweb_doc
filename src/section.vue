@@ -430,7 +430,6 @@ export default {
     height: 180px;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
-    -webkit-clip-path: ellipse(70% 70% at 50% 30%);
     clip-path: ellipse(70% 70% at 50% 30%);
     @media (min-width: 768px) {
       height: 250px;
@@ -451,25 +450,18 @@ export default {
   }
   .container {
     position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin: 50px auto;
+    justify-content: space-evenly;
     .sticky {
       pointer-events: all;
-      position: -webkit-sticky;
       position: sticky;
       bottom: 50px;
       left: 0;
       display: none;
-      -ms-flex-item-align: end;
       align-self: flex-end;
-      height: -webkit-fit-content;
-      height: -moz-fit-content;
       height: fit-content;
-      -webkit-box-shadow: 0 1px 23px -5px rgba(0, 0, 0, 0.2);
       box-shadow: 0 1px 23px -5px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       margin-left: 2%;
@@ -507,13 +499,6 @@ export default {
             height: 100%;
             width: 100%;
             z-index: -1;
-            background: -webkit-gradient(
-              linear,
-              left top,
-              right top,
-              from(#455fa2),
-              to(#2d84c1)
-            );
             background: linear-gradient(90deg, #455fa2 0%, #2d84c1 100%);
             display: none;
           }
@@ -634,7 +619,6 @@ export default {
           overflow: hidden;
           z-index: 1;
           cursor: pointer;
-          -webkit-transition: color 0.5s ease;
           transition: color 0.5s ease;
           background: white;
           border-bottom: 5px solid #dedede;
@@ -645,13 +629,10 @@ export default {
             font-size: 18px;
             font-weight: 500;
             line-height: 22px;
-            -webkit-transition: color 0.5s ease;
             transition: color 0.5s ease;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
             align-items: center;
             .icon {
               padding-left: 15px;
@@ -668,15 +649,7 @@ export default {
             height: 100%;
             width: 100%;
             z-index: -1;
-            background: -webkit-gradient(
-              linear,
-              left top,
-              right top,
-              from(#455fa2),
-              to(#2d84c1)
-            );
             background: linear-gradient(90deg, #455fa2 0%, #2d84c1 100%);
-            -webkit-transform: translateX(-101%);
             transform: translateX(-101%);
           }
         }
@@ -687,7 +660,6 @@ export default {
               color: white;
             }
             .elem-background {
-              -webkit-animation: slide-right .4s forwards 0.2s;
               animation: slide-right .4s forwards 0.2s;
             }
           }
@@ -695,14 +667,35 @@ export default {
       }
       .elem-content {
         position: relative;
-        margin: 0 -3%;
+        margin: 0 -1%;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      flex-wrap: nowrap;
+      .dropdown-mobile {
+        display: none;
+      }
+      .sticky {
+        display: block;
+        margin-left: 5%;
+        .elem-container {
+          .elem {
+            width: 200px;
+          }
+        }
+      }
+      .content {
+        width: calc(85% - 200px);
+        margin-left: 5%;
       }
     }
   }
   @media (min-width: 1024px) {
     .container {
       .sticky {
-        margin-left: none;
+        margin-left: 0%;
         .elem-container {
           .elem {
             width: 280px;
@@ -710,8 +703,9 @@ export default {
         }
       }
       .content {
-        width: 80%;
-        margin: 0 10%;
+        width: calc(95% - 280px);
+        margin: 0%;
+        margin-left: 5%;
         .elem-container {
           .elem {
             .elem-row {
@@ -724,18 +718,6 @@ export default {
       }
     }
   }
-  @media (min-width: 768px) {
-    .container {
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      .dropdown-mobile {
-        display: none;
-      }
-      .sticky {
-        display: block;
-      }
-    }
-  }
 }
 
 // --------- ANIMATION ---------
@@ -744,35 +726,29 @@ export default {
   @-webkit-keyframes slide-right {
     from {
       transform: translateX(-100%);
-      -webkit-transform: translateX(-100%);
     }
     to {
       transform: translateX(0);
-      -webkit-transform: translateX(0);
     }
   }
   // Standard syntax
   @keyframes slide-right {
     from {
       transform: translateX(-100%);
-      -webkit-transform: translateX(-100%);
     }
     to {
       transform: translateX(0);
-      -webkit-transform: translateX(0);
     }
   }
 
   // Vuejs transition
   .fade-enter-active,
   .fade-leave-active {
-    -webkit-transition: opacity 1s ease;
     transition: opacity 1s ease;
   }
   // Vuejs transition
   .fade-delay-enter-active,
   .fade-delay-leave-active {
-    -webkit-transition: opacity 1s ease .4s;
     transition: opacity 1s ease .4s;
   }
   .fade-enter, .fade-leave-to,
@@ -793,7 +769,6 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: 2;
   }
