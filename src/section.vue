@@ -311,10 +311,9 @@ export default {
         },
         goToPage(pageId) {
             const path = wwLib.wwWebsiteData.getPageRoute(pageId, true) || '/';
-            wwLib.$router.push(path);
+            wwLib.goTo(path);
             this.$emit('next', null);
         },
-
         // --------- EDITOR FUNCTIONS ---------
         // All the codes between /* wwManager:start */ and /* wwManager:end */ are only for editor purposes
         // So It won't in the published website!
